@@ -1,6 +1,8 @@
 ---
 name: ref
 description: ノート参照スキル。notes/のナレッジを効率的に検索・参照する。まずCLAIMS_INDEXで概要を把握し、必要なノートだけ深掘りする。「調べて」「教えて」「〜って何だっけ」「〜の根拠は」などの質問時に使う。
+user-invocable: true
+allowed-tools: Read, Grep, Glob, Bash
 ---
 
 # /ref — ナレッジ参照スキル
