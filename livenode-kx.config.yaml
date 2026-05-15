@@ -1,0 +1,37 @@
+# livenode-kx Configuration
+# Copy this file to your vault root and customize for your setup.
+# Skills (/kx, /distill, /health, /ref) read from this file.
+
+vault:
+  inbox: "00_Inbox"       # Where raw captures land
+  notes: "notes"           # Where processed notes live
+  archive: "06_Archive"    # Where processed inbox items are moved
+  ops: "ops"               # Operational space (reminders, observations, etc.)
+
+# Define your knowledge domains.
+# Each domain needs a corresponding map file in notes/ named {map}.md
+domains:
+  - name: "your-domain-1"
+    map: "your-domain-1-map"
+    description: "What this domain covers"
+  - name: "your-domain-2"
+    map: "your-domain-2-map"
+    description: "What this domain covers"
+  # Add more domains as needed
+
+# Optional integrations
+integrations:
+  # Set to true if you have Todoist MCP configured
+  # When enabled, /distill will register action items to Todoist
+  todoist: false
+
+  # Set to true if you have Obsidian MCP configured
+  # When enabled, skills will use MCP for vault operations (faster, more reliable)
+  # When false, skills use local file operations (Read, Write, Edit, Bash)
+  obsidian_mcp: false
+
+# Health check thresholds (used by /health)
+health:
+  map_min_notes: 5    # WARN if a domain map has fewer than this many notes
+  map_max_notes: 50   # WARN if a domain map has more than this many notes (consider splitting)
+  orphan_days: 7      # WARN if a note has been orphaned longer than this many days

@@ -1,0 +1,22 @@
+# AGENTS.md — livenode-kx Agent Instructions
+
+This repo/vault is a livenode-kx knowledge workspace: raw inputs enter through `00_Inbox/`, then `/kx` transforms them into durable knowledge. Preserve the user's judgment, decisions, and working context so future agents can continue cleanly.
+
+## Available Skills
+
+- `/kx` — transform raw inbox material into structured notes and project knowledge
+- `/distill` — persist session-end decisions, learned context, and judgment-axis updates
+- `/health` — check vault structure, workflow health, and possible inconsistencies
+- `/ref` — inspect or resolve vault references and source links
+
+## Key Constraint
+
+Never write directly to `notes/`. Route new or uncertain material through `00_Inbox/` and then `/kx`.
+
+## Return Protocol
+
+Task: [what you did in one line]
+Diff: [changed files and paths, only the important points]
+Decision: [judgment made and why]
+Risk: [uncertain points or unresolved issues]
+Next: [what the human should decide or review]

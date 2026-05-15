@@ -1,0 +1,33 @@
+# livenode-kx Note Frontmatter Schema
+# All notes in notes/ must include these fields
+
+required:
+  description:
+    type: string
+    max_chars: 200
+    rule: "Must add information beyond the title — mechanism, scope, or implication. NOT a restatement of the title."
+  type:
+    type: enum
+    values: [idea, insight, decision, question, tension, synthesis]
+  domain:
+    type: array
+    note: "List of domain names matching your livenode-kx.config.yaml domains"
+  created:
+    type: date
+    format: YYYY-MM-DD
+  topics:
+    type: array
+    note: "At least one domain map wikilink, e.g. [[your-domain-map]]"
+
+optional:
+  language:
+    type: enum
+    values: [ja, en, mixed]
+    default: en
+  relevant_notes:
+    type: array
+    note: "Wikilinks to related notes"
+  domain_weight:
+    type: float
+    range: "0.0 - 1.0"
+    note: "Confidence/expertise level for this domain. Part of the Capability Declaration Protocol — how strongly this note contributes to domain knowledge. Higher = more central claim."

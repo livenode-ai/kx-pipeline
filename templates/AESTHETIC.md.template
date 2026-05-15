@@ -1,0 +1,32 @@
+# AESTHETIC.md — Judgment Axis & Aesthetic Log
+
+> This file captures the delta between generic AI output and your authentic voice.
+> Update via /distill Step 3.5, or by saying "判断軸に追記して" during a session.
+
+---
+
+## NO Patterns（AI-generic outputs I reject）
+
+- Proposals structured as "Problem → Solution → Effect" feel sterile
+- Lists of numbered options without a strong recommendation
+- Excessive hedging ("it depends", "there are many approaches")
+- [add your own]
+
+## YES Patterns（outputs that feel authentically mine）
+
+- Cut in from an unexpected angle
+- Lead with the conclusion, then the reasoning
+- Opinionated recommendations, not menus
+- [add your own]
+
+---
+
+## Delta Log
+
+<!-- Format: DATE | AI said: __ | What was off: __ | What would be right: __ -->
+
+<!-- Example:
+2026-05-01 | AI said: "Here are three approaches to consider..." |
+  What was off: Gave me options instead of a recommendation |
+  What would be right: "Go with X. Here's why." -->
+
