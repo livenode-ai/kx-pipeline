@@ -72,6 +72,43 @@ Tools like mem0, MemGPT, and Zep solve retrieval — what you know. livenode-kx 
 
 ---
 
+## Lifecycle — the 4 commands only work as a loop
+
+`/kx` and `/distill` are not standalone utilities. They are **two halves of the cycle that accumulates judgment over time.**
+
+```
+                ┌──────────────────────────────────┐
+                │                                  │
+   ① You make decisions in a session              │
+        │                                          │
+        ▼                                          │
+   ② /distill                                      │
+       writes a handover into 00_Inbox/            │
+       updates BRIEFING / VISION /                 │
+       AESTHETIC / MEMORY                          │
+        │                                          │
+        ▼                                          │
+   ③ /kx                                           │
+       refines handovers in 00_Inbox/              │
+       into Noetic Cell notes                      │
+       saves atomic notes to notes/                │
+       rebuilds CLAIMS_INDEX                       │
+        │                                          │
+        ▼                                          │
+   ④ Next session calls /ref                       │
+       enters via CLAIMS_INDEX, staged reading     │
+       loads prior judgment as full context        │
+        │                                          │
+        └──────────────────────────────────────────┘
+                back to ①
+```
+
+**The loop is the value.** Running `/distill` alone just piles up handovers. Running `/kx` alone never receives your decision history. Run both every session and your notes become a structured record of your judgment, not just your knowledge.
+
+File destinations (BRIEFING.md / VISION.md / AESTHETIC.md / MEMORY.md) are configurable in `livenode-kx.config.yaml` under `distill:`. Defaults are at vault root; PARA users can set patterns like `01_Projects/{project}/BRIEFING.md`.
+
+---
+
 ## The 4 Commands
 
 | Command | What it does |

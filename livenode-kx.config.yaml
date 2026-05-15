@@ -19,6 +19,22 @@ domains:
     description: "What this domain covers"
   # Add more domains as needed
 
+# Distill behavior (paths persist judgment from each session)
+# All paths are relative to the vault root. Leave blank to skip that step.
+distill:
+  # Where to write handover files. Templated with {date} and {topic}.
+  handover_path_pattern: "00_Inbox/{date}_{topic}_HO.md"
+
+  # Where per-project briefings live. Templated with {project}.
+  # Default keeps BRIEFING.md at the vault root. PARA users may set
+  # this to "01_Projects/{project}/BRIEFING.md" or similar.
+  briefing_path_pattern: "BRIEFING.md"
+
+  # Single-file destinations (set to "" to skip)
+  vision_path: "VISION.md"        # long-term ideas, open questions, growth log
+  memory_path: "MEMORY.md"        # rolling state of active projects
+  aesthetic_path: "AESTHETIC.md"  # YES/NO patterns (user voice calibration)
+
 # Optional integrations
 integrations:
   # Set to true if you have Todoist MCP configured

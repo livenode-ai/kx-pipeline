@@ -100,7 +100,7 @@ Voice memo / quick note
         │
         ▼ (end of session: /distill)
   00_Inbox/YYYY-MM-DD_topic_HO.md (handover)
-  01_Projects/[project]/BRIEFING.md (updated)
+  BRIEFING.md (updated; path is configurable in livenode-kx.config.yaml)
   AESTHETIC.md (judgment calibration log, if delta found)
         │
         ▼ (next /kx run)

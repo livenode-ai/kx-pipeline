@@ -8,7 +8,21 @@ allowed-tools: Read, Write, Edit, Grep, Glob, Bash
 # /distill — 蒸留
 
 セッションの成果を記録・保存する。ナレッジのライフサイクルにおける「記録→保存」工程。
-作成されたハンドオーバーは 00_Inbox/ に着地し、次回の /kx で notes/ に精錬される。
+作成されたハンドオーバーは `00_Inbox/` に着地し、次回の `/kx` で `notes/` に精錬される。
+これが livenode-kx 循環の上流フェーズ ── 判断ログを次セッションへ送り出す半分。
+
+> **パスの前提について:** Step 1〜4 が書き込むファイル（HO・BRIEFING・VISION・MEMORY・AESTHETIC）の置き場所は、Vault 直下の `livenode-kx.config.yaml` の `distill:` セクションで設定する。読まずにハードコードしない。
+>
+> ```yaml
+> distill:
+>   handover_path_pattern: "00_Inbox/{date}_{topic}_HO.md"
+>   briefing_path_pattern: "BRIEFING.md"  # PARA運用なら "01_Projects/{project}/BRIEFING.md"
+>   vision_path: "VISION.md"
+>   memory_path: "MEMORY.md"
+>   aesthetic_path: "AESTHETIC.md"
+> ```
+>
+> 各パスは空文字にすればそのステップをスキップする。
 
 Optional: add mcp__todoist__* tools if using Todoist integration
 
@@ -26,10 +40,11 @@ Optional: add mcp__todoist__* tools if using Todoist integration
 
 ## Step 1: ハンドオーバー作成
 
-今回のセッション内容を記録し、`00_Inbox/` に保存する。
+今回のセッション内容を記録し、`livenode-kx.config.yaml` の `distill.handover_path_pattern` で指定されたパスに保存する。
 
 ### ファイル名
-`00_Inbox/YYYY-MM-DD_[テーマ]_HO.md`
+パターンの `{date}` を `YYYY-MM-DD`、`{topic}` をセッションのテーマ名に置換する。
+デフォルト: `00_Inbox/YYYY-MM-DD_[テーマ]_HO.md`
 
 ### 構造
 
@@ -74,8 +89,10 @@ Optional: add mcp__todoist__* tools if using Todoist integration
 
 ## Step 2: BRIEFING.md 差分更新
 
-該当プロジェクトの `01_Projects/[プロジェクト]/BRIEFING.md` を差分更新する。
+`livenode-kx.config.yaml` の `distill.briefing_path_pattern` を解決し、該当 BRIEFING.md を差分更新する。
+`{project}` プレースホルダがあれば、ハンドオーバーから推定したプロジェクト名で置換する。
 
+- パターンが空文字ならスキップ
 - 全体を書き直さない。今回のセッションで変わった部分だけ反映
 - 可能な限り元の会話ログから蒸留する（要約の要約は劣化する）
 - 基準: 「このプロジェクトに今日から参加する人が読んで全体像を把握できる」
@@ -85,7 +102,9 @@ Optional: add mcp__todoist__* tools if using Todoist integration
 
 ## Step 3: VISION.md 差分更新
 
-以下があれば VISION.md に追記する:
+`distill.vision_path` を解決して追記する（空文字ならスキップ）。
+
+以下があれば追記する:
 - 新しい構想・ビジョン
 - 未解決の問い
 - 成長の記録（新しくできるようになったこと）
@@ -97,6 +116,8 @@ Optional: add mcp__todoist__* tools if using Todoist integration
 
 ## Step 3.5: AESTHETIC.md 追記（あれば）
 
+`distill.aesthetic_path` を解決して追記する（空文字ならスキップ）。
+
 AIが出した提案に対してユーザーが「ここ違う」「これは俺らしい」と感じた差分があれば、AESTHETIC.md の YES/NO パターンに1行追記する。
 
 なければスキップ。
@@ -105,7 +126,9 @@ AIが出した提案に対してユーザーが「ここ違う」「これは俺
 
 ## Step 4: MEMORY.md 差分更新
 
-以下があれば MEMORY.md に追記する:
+`distill.memory_path` を解決して追記する（空文字ならスキップ）。
+
+以下があれば追記する:
 - 進行中プロジェクトの状態変化
 - 新しい意思決定
 - 技術スタック変更
